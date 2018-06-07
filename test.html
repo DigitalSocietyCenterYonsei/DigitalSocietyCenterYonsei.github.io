@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Center for Digital Society, Yonsei University</title>
+
+	<!-- Bootstrap Core and Other JavaScript Sources -->
+	<script src="../public/vendor/jquery/jquery.min.js"></script>
+	<script src="../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="../public/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="../public/js/stylish-portfolio.js"></script>
+	<script src="../public/js/papaparse.min.js"></script> 
+	<script>
+		var papadata;
+		Papa.parse("https://raw.githubusercontent.com/geonsik-yu/geonsik-yu.github.io/master/YonseiCDS/1Experts.csv", {
+			download: true, header: true, dynamicTyping: true,
+			complete: function(results) {
+				console.log(results)
+				papadata = results.data
+				for (i = 0; i < results.data.length; i++) {
+					if(results.data[i].Type == 'Professionals'){
+						document.getElementById('ProfessionalsTable').innerHTML += '<tr class="display-none-big"> \
+								<td style="min-width:160px;">&nbsp;&nbsp;<b>'+ results.data[i].Name+'</b></td> \
+								<td>&nbsp;&nbsp;'+ results.data[i].Descriptions +'</td> \
+							</tr> \
+							<tr class="display-none-small"> \
+								<td><b>'+ results.data[i].Name +'</b></td> \
+							</tr> \
+							<tr class="display-none-small"> \
+								<td>'+results.data[i].Descriptions +'</td> \
+							</tr>'
+					}else{
+						document.getElementById('ResearchersTable').innerHTML += '<tr class="display-none-big"> \
+								<td style="min-width:160px;">&nbsp;&nbsp;<b>'+ results.data[i].Name+'</b></td> \
+								<td>&nbsp;&nbsp;'+ results.data[i].Descriptions +'</td> \
+							</tr> \
+							<tr class="display-none-small"> \
+								<td><b>'+ results.data[i].Name +'</b></td> \
+							</tr> \
+							<tr class="display-none-small"> \
+								<td>'+results.data[i].Descriptions +'</td> \
+							</tr>'
+					}
+				}
+			}
+		})
+		console.log(papadata)
+	</script>
+
+	<!-- Bootstrap Frame CSS and Other Styles -->
+	<link rel="stylesheet" type="text/css" href="../public/vendor/bootstrap/css/bootstrap.min.css" >
+	<link rel="stylesheet" type="text/css" href="../public/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oswald">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Rozha One">
+	<link rel="stylesheet" type="text/css" href="../public/css/stylish-portfolio.css">
+	<link rel="stylesheet" type="text/css" href="../public/css/digital-society.css">	
+</head>
+
+
+<body style="height: 150px;">
+
+	<section id="experts" class="experts border-top-grey-collapse mt50">
+		<div class="container">
+		<div class="row">
+			<div class="col-lg-10 mx-auto text-center">
+				<h1 style="font-family:Oswald">PROFESSIONALS</h1>
+				<hr class="medium">
+				<div class="row" style="margin-bottom:50px">
+					<div class="col-sm-12">
+						<table style="text-align:left" id="ProfessionalsTable">
+						</table>
+					</div>
+				</div>
+
+				<h1 style="font-family:Oswald">RESEARCHERS</h1>
+				<hr class="medium">
+				<div class="row" style="margin-bottom:50px">
+					<div class="col-sm-12">
+						<table style="text-align:left" id="ResearchersTable">
+		
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+
+</body>
+
+</html>

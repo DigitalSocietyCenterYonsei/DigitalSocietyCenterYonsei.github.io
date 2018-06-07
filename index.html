@@ -1,9 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />	
+	<meta name="author" content="Geonsik Yu">
+	<title>Center for Digital Society, Yonsei University</title>
+
+	<!-- Bootstrap Core and Other JavaScript Sources -->
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="/js/stylish-portfolio.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js" type="text/javascript"></script>
+	<script src="js/papaparse.min.js"></script> 
+
+	<!-- Bootstrap Frame CSS and Other Styles -->
+	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css" >
+	<link rel="stylesheet" type="text/css" href="/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oswald">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Rozha One">
+	<link rel="stylesheet" type="text/css" href="/css/stylish-portfolio.css">
+	<link rel="stylesheet" type="text/css" href="/css/digital-society.css">	
+
+	<link href="css/stylesheet.css" rel="stylesheet" media="all">
 
 </head>
-<body>
 
-</body>
+<body style="height: 150px;">
+
+	<!-- ejs Header -->
+    <% include ./shared/Header %>
+
+	<!-- Section: Image Slider -->	
+	<section class="imageSlider border-top-grey">
+		<div class="nopadding" style="width:100%;height:0;">
+			<div class="row nopadding">
+				<div class="nopadding">
+					<img class="mySlides" src="/img/Sliders5.png">
+					<div class="image-top-right" Style="color:black;"><b>Network Analyisis and Visualization</b></div>
+				</div>
+				<div class="nopadding">
+					<img class="mySlides" src="/img/Sliders4.png">
+					<div class="image-top-right" Style="color:black;"><b>Business Strategy Simulations</b></div>
+				</div>
+				<div class="nopadding">
+					<img class="mySlides" src="/img/Sliders1.jpeg">
+					<div class="image-top-right"></div>
+				</div>
+			</div>
+			<div class="dotContainer row">
+				<div class="imageDot" onclick="showDivs(0, 300)"></div>
+				<div class="imageDot" onclick="showDivs(1, 300)"></div>
+				<div class="imageDot" onclick="showDivs(2, 300)"></div>
+			</div>
+		</div>	
+	</section>
+
+	<!-- Research Area -->
+	<section id="portfolio" class="portfolio mt50">
+		<div class="container">
+		<div class="display-none-small">
+			<h4 style="font-family:'Oswald';margin-top:-30px;margin-bottom:30px">
+			Our research group aims to present a policy alternative for convergence research and social problem solving in the hyper-connected society.
+			</h4>
+		</div>
+		<div class="row">
+			<div class="col-lg-10 mx-auto text-center">
+				<h2 class="display-none-big" style="font-family:'Oswald';">OUR RESEARCH INTERESTS</h2>
+				<h2 class="display-none-small" style="font-family:'Oswald';">RESEARCH INTERESTS</h2>				
+				<hr class="medium display-none-big" style="margin-bottom:25px">
+
+				<!-- Research Area 1 -->
+				<div class="row shadowBox" style="background-color:#ed6b47;">
+					<div class="col-md-12 col-sm-12">
+						<h3 style="text-align:center"> <strong>Interorganizational Networks</strong> </h3>
+						<p style="text-align:justify;">
+							<img src="/img/Network.png" style="width:130px;float:left;padding-right:14px">
+							Research on the network of firms and organizations analyzes not only the traditional value pursuit activities but also the social value pursuit activities. Network activity and its influence in the market economy; Organizational-level interactions that are spreading in the hyper-connected society such as the pursuit of social value of high technology companies; Institutional and policy networking activities and their effects; And the activities of companies that build user engagement platforms.
+						</p>
+					</div>	
+				</div>
+
+				<!-- Research Area 2 -->				
+				<div class="row shadowBox" style="background-color:#fbad54;">
+					<div class="col-md-12 col-sm-12">
+						<h3> <strong>Citizen/User Community</strong> </h3>
+						<p style="text-align:justify;">
+							Community-related research between citizens and users focuses on the phenomenon of multi-faceted overlapping of attributes as consumers and civilizations. The main research scope is to make decisions in collective intelligence society, to combine values of consumer rationality and social public interest, and to search for models to enhance the capability of super intelligent citizens.
+						</p>
+					</div>	
+				</div>
+				
+				<!-- Research Area 3 -->				
+				<div class="row shadowBox mb35px" style="background-color:#ffcbb9;">
+					<div class="col-md-12 col-sm-12">
+						<h3 style="text-align:center"> <strong>Institutional Ecosystem</strong> </h3>
+						<p style="text-align:justify;">
+							Institutional ecology research focuses on problems such as institutional retardation and social friction that can not keep up with the hyperlinked intelligent society. Mutual norms of business and consumers in the connected community; The main research scope is the mediation of social algorithms, social and market fairness, user information protection system.
+						</p>
+					</div>
+				</div>				
+				
+			</div>
+		</div>
+		<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</section>
+
+
+	<!-- Portfolio -->
+	<section id="portfolio" class="portfolio" style="padding-top:25px !important;">
+		<div class="container">
+		<div class="row">
+				<div class="col-lg-10 mx-auto">
+				<h2 style="font-family:'Oswald';text-align:center;">LATEST RESEARCH</h2>
+				<hr class="medium">
+				<div id="listBody_research" style="margin-bottom:100px">						
+				</div>
+				<a href="./Research" class="btn btn-dark" style="float:right;">View More</a>
+			</div>
+			<a id="loadMore_1" class="btn btn-dark text-white" style="display:none" method="post"></a>		
+		</div>
+		</div>
+	</section>
+
+	<!-- Slogan -->
+    <% include ./shared/Slogan %>
+
+	<!-- Research Area -->
+	<section id="portfolio" class="portfolio" style="padding-top:75px !important;">
+		<div class="container">
+		<div class="row">
+			<div class="col-lg-10 mx-auto text-center">
+				<h2 style="font-family:'Oswald';">POLICY INTERESTS</h2>
+				<hr class="medium display-none-big" style="margin-bottom:25px">
+				<!-- Research Area 4 -->
+				<div class="row shadowBox" style="background-color:#49c3b6;">
+					<div class="col-md-12 col-sm-12">
+						<h3 style="text-align:center"> <strong>Communication Platforms in Civil Society</strong> </h3>
+						<p style="text-align:justify;">
+							<img src="/img/NetworkCitizen.png" style="width:110px;float:right;padding-left:14px">
+							The focus will be on a platform that controls the interaction between institutional ecosystems and citizen user communities. Connectivity and super intelligence have rather polarized society, and the truthfulness and authenticity of information between groups are distorted, and the institutional plan to solve such problems is suggested.
+						</p>
+					</div>	
+				</div>
+				<!-- Research Area 5 -->
+				<div class="row shadowBox" style="background-color:#ced665;">
+					<div class="col-md-12 col-sm-12">
+						<h3 style="text-align:center;"> <strong> User Engagement Platforms</strong> </h3>
+						<p style="text-align:justify;">
+							<img src="/img/Engagement.png" style="width:100px;float:right;padding-left:14px">
+							The research focuses on a platform that controls the interaction between the enterprise and related organizations and the user community in a new corporate environment where consumer participation is expanded. In this platform, the problem of alienation of users who can not participate in collective intelligence occurs and suggests strategic countermeasures of companies that solve it.
+						</p>
+					</div>	
+				</div>				
+				<!-- Research Area 6 -->
+				<div class="row shadowBox" style="background-color:#7e9fdd;">
+					<div class="col-md-12 col-sm-12">
+						<h3 style="text-align:center"> <strong>Governance for Social Trust</strong> </h3>
+						<p style="text-align:justify;">
+							<img src="/img/SocialTrust.png" style="width:130px;float:left;padding-right:14px">
+							The research focuses on the governance system that controls the interactions between corporate networks and institutional ecosystems. This paper proposes a new institutional mechanism to monitor and improve the interconnection network between enterprises and organizations required in the early link intelligence society.
+						</p>
+					</div>	
+				</div>
+				
+			</div>
+		</div>
+		<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</section>
+
+	<section id="portfolio" class="portfolio" style="padding-top:65px !important; padding-bottom:0px !important;">
+		<div class="container">
+		<div class="row">
+			<div class="col-lg-10 mx-auto text-center">
+				<h2 style="font-family:'Oswald';text-align:center;">RECENT TRENDS</h2>
+				<hr class="medium">	
+				<div id="listBody_trends" style="margin-bottom:100px">
+				</div>	
+				<a href="./Trends" class="btn btn-dark" style="float:right;margin-top:-70px;">View More</a>
+			</div>
+			<a id="loadMore_2" class="btn btn-dark text-white" style="display:none" method="post"></a>		
+		</div>
+		</div>
+	</section>
+
+    <% include ./shared/Recruit %>
+    <% include ./shared/Footer %>
+
+
+	<script id="ajaxTempl_research_home" type="text/x-jquery-tmpl">
+		<div class="row" style="margin-bottom:30px;padding:10px;width:100%;">
+			<div class="col-md-4 col-sm-12">
+				<a href="#">
+					<img class="img-portfolio img-fluid" src="${ImageName}" style="width:100%; padding-top:16px;">
+				</a>
+			</div>
+			<div class="col-md-8 col-sm-12" style="min-height:230px;">
+				<div style="color:blue;font-weight:bold;float:left;text-align:left;">
+					{{if Category == 1}}
+						Interorganizational Networks
+					{{else Category == 2}}
+						Citizen/User Community
+					{{else}}
+						Institutional Ecosystem
+					{{/if}}
+				</div>
+				<br/>
+				<div class="researchItem"> ${Title} </div>
+				<hr class="researchHr"/>
+				<div style="width:100%;text-align:right;"> <b>${Authors}</b> </div>
+				<div class="p_overflow_long" style="text-align:justify;">
+					${Abstract.replace("<p>","").replace("</p>","")}
+				</div>
+			</div>
+		</div>
+	</script>
+
+	<script id="ajaxTempl_trend_home" type="text/x-jquery-tmpl">
+		<div class="row" style="padding:10px;width:100%">
+			<div class="col-md-4 col-sm-12">
+				<a href="#">
+					<img class="img-portfolio img-fluid" src="${ImageName}" style="width:100%; padding-top:16px;">
+				</a>
+			</div>
+			<div class="col-md-8 col-sm-12">
+				<div style="color:blue;font-weight:bold;float:left;text-align:left;">
+					{{if IsGlobal == 0}}
+						[KOREAN]&nbsp;
+					{{else IsGlobal == 1}}
+						[GLOBAL]&nbsp;
+					{{/if}}
+					{{if Category == 1}}
+						Communication Platforms in Civil Society
+					{{else Category == 2}}
+						User Engagement Platforms
+					{{else Category == 3}}
+						Governance for Social Trust
+					{{/if}}					
+				</div>
+				<br/>
+				<div class="researchItem"> ${ArticleTitle} </div>
+				<hr class="researchHr"/>
+				<p style="text-align:justify;overflow:hidden;min-height:120px;">
+					${Contents}
+				</p>
+			</div>
+		</div>
+	</script>
+	
+	<script src="js/mySideNav.js"></script> 
+
+
+	<script>
+		Papa.parse("https://raw.githubusercontent.com/geonsik-yu/CDS_files/master/YonseiCDS/5.Images_home.csv", {
+				download: true, header: true, dynamicTyping: true,
+				complete: function(results) {
+				papadata = results.data
+				lastIndex = papadata.length
+				for(i=0;i<lastIndex; i++){
+					papadata[i].ImageName = "https://raw.githubusercontent.com/geonsik-yu/CDS_files/master/YonseiCDS/Images_home/"+papadata[i].ImageName
+					var obj = $("#ajaxTempl_research_home").tmpl(papadata[i]).appendTo("#listBody_research");	
+				}
+			}
+		})
+
+		/*
+		var slideIndex = 0;
+		var interval;
+		var timer = function(){
+			interval = setInterval(function() {
+				slideIndex += 1;
+				slideIndex = slideIndex%3;
+				showDivs(slideIndex, 2000);				
+			}, 40000);
+		}
+
+		$(document).ready(function(){
+			showDivs(slideIndex, 0);
+			timer();
+		});
+		
+		function showDivs(n, time) {
+			slideIndex = n;
+			var i;
+			var x = $(".mySlides");
+			var y = $(".image-top-right")
+			var dots = $(".imageDot");
+
+			x.eq(n).fadeIn(time);
+			y.eq(n).fadeIn(time);
+			for (i = 0; i < x.length; i++) {
+				if (i != n){ 
+					x.eq(i).fadeOut(time);
+					y.eq(i).fadeOut(time);
+					dots.eq(i).css('background-color', 'transparent')
+				}
+			}
+			dots.eq(n).css('background-color', 'grey');
+			clearInterval(interval);
+			timer();
+		}
+		*/
+		var loadingSize = 3;
+		document.querySelector('#loadMore_1').addEventListener('click', function(){
+			Papa.parse("https://raw.githubusercontent.com/geonsik-yu/CDS_files/master/YonseiCDS/2Research.csv", {
+				download: true, header: true, dynamicTyping: true,
+				complete: function(results) {
+					papadata = results.data
+					lastIndex = papadata.length
+					for(i=Math.max(lastIndex-1, -1);
+						i>=Math.max(lastIndex-loadingSize, 0); i--){
+						papadata[i].ImageName = "https://raw.githubusercontent.com/geonsik-yu/CDS_files/master/YonseiCDS/Images/"+papadata[i].ImageName
+						var obj = $("#ajaxTempl_research_home").tmpl(papadata[i]).appendTo("#listBody_research");	
+					}
+				}
+			})
+		});
+
+		document.querySelector('#loadMore_2').addEventListener('click', function(){
+			Papa.parse("https://raw.githubusercontent.com/geonsik-yu/CDS_files/master/YonseiCDS/3Trends.csv", {
+				download: true, header: true, dynamicTyping: true,
+				complete: function(results) {
+					papadata = results.data
+					lastIndex = papadata.length
+					for(i=Math.max(lastIndex-1, -1);
+						i>=Math.max(lastIndex-loadingSize, 0); i--){
+						papadata[i].ImageName = "https://raw.githubusercontent.com/geonsik-yu/CDS_files/master/YonseiCDS/Images/"+papadata[i].ImageName
+						var obj = $("#ajaxTempl_trend_home").tmpl(papadata[i]).appendTo("#listBody_trends");	
+					}
+				}
+			})
+		});
+
+		document.getElementById('loadMore_1').click();
+		document.getElementById('loadMore_2').click();
+	</script>
+	</body>
+
 </html>

@@ -1,0 +1,263 @@
+
+/* Minor Deco CSS */	
+@media (min-width: 767px){
+	#LogoSpace { margin:auto;width: 50%;}
+	.border-top-grey-collapse { border-top-style: solid !important; border-top-width: 1px !important; border-color: grey !important;}
+	.display-none-small{ display:none !important; }
+	#myHornav { height: 50px !important; }
+	.mt50 { margin-top: 50% }
+	.mb35px { margin-bottom:35px; }
+}
+@media (max-width: 767px){
+	#LogoSpace { margin:auto;width: 80%;}
+	.display-none-big{ display:none !important; }
+	.mt50 { margin-top: 0px }
+	.mb35px { margin-bottom: 0px; }	
+}
+@media (min-width: 992px){.container { max-width: 1120px !important;}}
+
+li.nav-item.right-deco {
+	border-color: black ;
+	border-right-style:dotted ;
+	border-right-width:1px ;	
+	height:60% ;
+}
+.nopadding {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	width: 100% !important;
+}
+
+.p_overflow {
+	text-align:justify;
+	overflow:hidden;
+	line-height: 1.4em;
+	text-overflow: ellipsis; 
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical; 
+	word-wrap:break-word;
+	margin-bottom:2px;
+}
+.p_overflow_long {
+	text-align:justify;
+	overflow:hidden;
+	line-height: 1.4em;
+	text-overflow: ellipsis; 
+	display: -webkit-box;
+	-webkit-line-clamp: 7;
+	-webkit-box-orient: vertical; 
+	word-wrap:break-word;
+	margin-bottom:2px;
+}
+
+
+#menu-toggle {
+	margin-right: 5px !important;
+	margin-top: 5px !important;
+}
+
+.border-top-grey {
+	border-top-style: solid !important;
+	border-top-width: 1px !important;
+	border-color: grey !important;	
+	/*
+	border-color: #007bff !important;
+	*/
+}
+
+/* Side Navigation Drawer CSS */
+.sidenav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 3;
+	top: 0;
+	right: 0;
+	background-color: #fff;
+	overflow-x: hidden;
+	transition: 0.2s;
+	padding-top: 30px;
+}
+.sidenav_greyover {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 2;
+	top: 0;
+	right: 0;
+	background-color: #111;
+	overflow-x: hidden;
+	transition: 0s;
+	padding-top: 30px;
+	opacity: 0.2;
+	filter: alpha(opacity=20); /* For IE8 and earlier */
+}
+
+.sidenav a {
+	padding: 8px 8px 2px 32px;
+	text-decoration: none;
+	font-size: 14px;
+	color: #818181;
+	display: block;
+	transition: 0.1s;
+}
+
+.sidenav a:hover {
+	color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+	position: absolute;
+	top: 0;
+	left: 0px;
+	font-size: 36px;
+	margin-left: 50px;
+	width:70%;
+	height: 100%;
+}
+
+@media screen and (max-height: 450px) {
+	.sidenav {padding-top: 15px;}
+	.sidenav a {font-size: 18px;}
+}	
+
+.mySidenav_hr {
+	margin-top: 2px;
+	margin-bottom: 2px;
+	width: 85%;
+	color: #007bff;
+	background-color: #007bff;
+}
+	
+/* Image Slider CSS */
+@media (max-width: 767px){ /* Slider Folding Condition */
+	.mySlides{ display: none !important; }
+	.mybadge{ display: none !important; }
+	.image-top-right{ display: none !important; }
+	#researchArea{ margin-top:0% !important; }
+	.imageSlider-dotContainer { display: none !important; }
+	.imageDot { display: none !important; }
+}
+.mySlides {
+	position:absolute;
+	display:none;
+	width:100%;
+}	
+.image-top-right { /* Slider image description */
+	position: absolute;
+	top: 270px;
+	right: 45px;
+	color: white;
+	font-size: 20pt;
+	z-index: 2;
+}
+.dotContainer {	/* Slider image dots */
+	width: 66px; /* (22px)x(3imageSlides) */
+	margin-left: auto !important;
+	margin-right: auto !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+ 	padding-top: 46%;
+}
+.imageDot { /* Slider image dots */
+	cursor: pointer;
+	display:inline-block;
+	z-index: 3;
+	width: 16px;
+	height: 16px;
+	margin-left: 3px;
+	margin-right: 3px;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	border-radius: 50%;
+	border-color: grey;
+	border-width: 1px;
+	border-style: solid;
+}
+.imageDot:hover {
+	background-color: grey;
+}
+
+.shadowBox{
+	box-shadow:15px 15px 35px #BBBBBB; 
+	padding:20px;
+}
+
+.researchItem {
+    display: block;
+    font-size: 20px;
+    margin-top: 0;
+	margin-bottom: 3px;	
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+	text-align: left;
+}
+.researchHr{
+	border-width:2px; 
+	margin-top:3px;
+	margin-bottom:3px;
+	border-color:grey;
+}
+
+
+#aboutUs {
+	padding: 50px 0;
+	background-color:#e9ecef;		
+}
+
+#experts {
+	padding: 50px 0;
+	background-color:#e9ecef;		
+}
+
+#events {
+	padding: 50px 0;
+	background-color:#e9ecef;		
+}
+
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.modal-close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+

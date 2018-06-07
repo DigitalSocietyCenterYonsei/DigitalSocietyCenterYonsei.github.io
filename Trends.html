@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />	
+	<title>Center for Digital Society, Yonsei University</title>
+
+	<!-- Bootstrap Core and Other JavaScript Sources -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="js/stylish-portfolio.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js" type="text/javascript"></script>
+	<script src="js/papaparse.min.js"></script> 	
+
+	<!-- Bootstrap Frame CSS and Other Styles -->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" >
+	<link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oswald">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Rozha One">
+	<link rel="stylesheet" type="text/css" href="css/stylish-portfolio.css">
+	<link rel="stylesheet" type="text/css" href="css/digital-society.css">		
+</head>
+
+
+<body style="height: 150px;">
+    <% include ./shared/Header %>
+	<section id="experts" class="experts border-top-grey-collapse">
+		<div class="container">
+		<div class="row">
+			<div class="col-lg-10 mx-auto text-center">
+				<h1 style="font-family:Oswald">ARTICLES</h1>
+				<hr class="medium">
+
+				<div id="listBody" class="row" style="margin-bottom:30px"></div>	
+				<a id="loadMore" class="btn btn-dark text-white" style="width:100%;margin-top:30px;" method="post"> Load More </a>				
+			</div>
+		</div>
+		</div>
+	</section>
+    <% include ./shared/Slogan %>
+    <% include ./shared/Footer %>
+
+	<script id="ajaxTempl" type="text/x-jquery-tmpl">
+	<div class="row" style="padding:10px;width:100%">
+		<div class="col-md-4 col-sm-12">
+			<a href="#">
+				<img class="img-portfolio img-fluid" src="${ImageName}" style="width:100%; padding-top:16px;">
+			</a>
+		</div>
+		<div class="col-md-8 col-sm-12">
+			<div style="color:blue;font-weight:bold;float:left;text-align:left;">
+				{{if IsGlobal == 0}}
+					[KOREAN]&nbsp;
+				{{else IsGlobal == 1}}
+					[GLOBAL]&nbsp;
+				{{/if}}
+				{{if Category == 1}}
+					Communication Platforms in Civil Society
+				{{else Category == 2}}
+					User Engagement Platforms
+				{{else Category == 3}}
+					Governance for Social Trust
+				{{/if}}					
+			</div>
+			<br/>
+			<div class="researchItem"> ${ArticleTitle} </div>
+			<hr class="researchHr"/>
+			<p style="text-align:justify;overflow:hidden;min-height:120px;">
+				${Contents}
+				<a id="${Id}" class="btn btn-dark text-white modalBtn" style="float:right;margin-top:10px;" href="javascript:void(0);" onclick="openModal(this)">
+					View More
+				</a>		
+			</p>
+		</div>
+		<div id="modal_${Id}" class="modal">
+			<div class="modal-content">	
+				<div style="width:100%">
+					<div class="researchItem"> ${ArticleTitle} </div>
+					<hr class="researchHr"/>
+					<div class="researchItem" style="font-size:12px;color:blue;font-weight:bold;text-align:right !important">Category:&nbsp;
+					{{if IsGlobal == 0}}
+						[KOREAN]&nbsp;
+					{{else IsGlobal == 1}}
+						[GLOBAL]&nbsp;
+					{{/if}}
+					{{if Category == 1}}
+						Communication Platforms in Civil Society
+					{{else Category == 2}}
+						User Engagement Platforms
+					{{else Category == 3}}
+						Governance for Social Trust
+					{{/if}}					
+					</div>
+					<div class="researchItem" style="font-size:12px;text-align:right !important"> <a href="${ExternalLink}">${ExternalLink}</a> </div>
+					<p style="text-align:justify;">
+						${Contents}
+					</p>
+				</div>
+				<a id="${Id}" class="btn btn-dark text-white" style="width:60px;margin:auto;" href="javascript:void(0);" onclick="closeModal(this)">
+					Close
+				</a>
+			</div>
+		</div>
+	</div>
+	</script>
+
+	<script src="js/mySideNav.js"></script> 
+
+
+	<script>
+		// JS for modal
+		function openModal(obj){
+			id = $(obj).attr('id');
+			modal = document.getElementById("modal_"+id);
+			modal.style.display = "block";	
+		}
+		function closeModal(obj){
+			id = $(obj).attr('id');
+			modal = document.getElementById("modal_"+id);
+			modal.style.display = "none";	
+		}
+
+		var currentCount = 0;
+		var loadingSize = 3;
+		var lastIndex = 0;
+		document.querySelector('#loadMore').addEventListener('click', function(){
+			Papa.parse("https://raw.githubusercontent.com/geonsik-yu/CDS_files/master/YonseiCDS/3Trends.csv", {
+				download: true, header: true, dynamicTyping: true,
+				complete: function(results) {
+					console.log(results)
+					papadata = results.data
+					lastIndex = papadata.length
+					for(i=Math.max(lastIndex-currentCount*loadingSize-1, -1);
+						i>=Math.max(lastIndex-(currentCount+1)*loadingSize, 0); i--){
+						papadata[i].ImageName = "https://raw.githubusercontent.com/geonsik-yu/CDS_files/master/YonseiCDS/Images/"+papadata[i].ImageName
+						var obj = $("#ajaxTempl").tmpl(papadata[i]).appendTo("#listBody");	
+
+					}
+					currentCount += 1;
+				}
+			})
+		});
+		document.getElementById('loadMore').click();
+	</script>
+</body>
+</html>
